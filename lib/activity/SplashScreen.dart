@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -17,7 +18,7 @@ class _SplashscreenState extends State<Splashscreen> {
           height: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/weatherbg.jpg"),
+              image: AssetImage("images/imagebg.jpg"),
               fit: BoxFit.cover,
               alignment: Alignment.center,
             ),
@@ -26,29 +27,47 @@ class _SplashscreenState extends State<Splashscreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset(
-                  'images/weather_logo.png',
-                  height: 240,
-                  width: 240,
-                ),
+                AnimatedTextKit(
+                  animatedTexts:[
+                    TypewriterAnimatedText(
+                  "Welcome! to ",
+                      textStyle: TextStyle(
+                     fontSize:45,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+                fontFamily: "fonts/Roboto-Italic.ttf.ttf"),
+              speed: Duration(milliseconds: 300),
+            ),
+          ],
+                  totalRepeatCount: 3,
+          ),
+
                 SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
                 Text(
                   "Sound To Vision",
                   style: TextStyle(
-                      fontSize: 45,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontFamily: "fonts/Roboto-BoldItalic.ttf"),
+                      fontFamily: "fonts/Roboto-BoldItalic.ttf",
+                      shadows:[
+                        Shadow(
+                          blurRadius: 20.0,
+                          color:Colors.blueAccent,
+                          offset: Offset(0,0),
+                        )
+                      ]
+                  )
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 30,
                 ),
                 Text(
-                  "By Alefiya",
+                  "By CodeVisionaries",
                   style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.w400,
                       color: Colors.white,
                       fontFamily: "fonts/Roboto-MediumItalic.ttf"),
