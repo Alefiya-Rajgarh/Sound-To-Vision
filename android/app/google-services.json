@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "187198975669",
+    "project_id": "sound-to-vision",
+    "storage_bucket": "sound-to-vision.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187198975669:android:90249fd0a2682b0c38d8fc",
+        "android_client_info": {
+          "package_name": "com.example.sound_to_vision"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn1q965CrY2wXY5bKNwtk4rYatD7FIeL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
