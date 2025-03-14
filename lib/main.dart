@@ -3,6 +3,8 @@ import 'activity/Home.dart';
 import 'activity/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:sound_to_vision_app/login/widget/text_field.dart';
+import 'package:sound_to_vision_app/login/screen/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +16,7 @@ void main() async {
     routes: {
       "/" : (context) => splashscreen(),
       "/home" : (context) => Home(),
+      "/login" : (context) => LoginScreen(),
     },
     debugShowCheckedModeBanner: false,
   ));
