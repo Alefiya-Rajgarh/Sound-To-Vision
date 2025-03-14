@@ -78,7 +78,16 @@ class _splashscreenState extends State<splashscreen> {
                 SpinKitWave(
                   color: Colors.blueAccent,
                   size: 50.0,
-                )
+                ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/login");
+                    },
+                    icon: Icon(
+                      Icons.ac_unit_rounded,
+                      size: 50,
+                      color: Colors.white,
+                    )),
               ],
             ),
           ),
