@@ -16,14 +16,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   bool isLoading = false;
 
   @override
-   void despose(){
+  void despose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
@@ -37,28 +36,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
       name: nameController.text,
     );
     if (res == "Successful") {
-      await FirebaseFirestore.instance.collection("users").doc(emailController.text).set({
-        "name": nameController.text,
-        "email": emailController.text,
-      });
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(emailController.text)
+          .set({"name": nameController.text, "email": emailController.text});
       setState(() {
         isLoading = true;
       });
       print("navigator running");
-      Navigator.pushReplacementNamed( context, '/home', arguments: {
-        "name_value": nameController.text,
-        "em_value": emailController.text,
-      });
-    }
-
-      else {
-        setState(() {
+      Navigator.pushReplacementNamed(
+        context,
+        '/home',
+        arguments: {
+          "name_value": nameController.text,
+          "em_value": emailController.text,
+        },
+      );
+    } else {
+      setState(() {
         isLoading = false;
-        });
-        showSnackBar(context, res);
+      });
+      showSnackBar(context, res);
     }
-    }
-
+  }
 
   @override
   Widget build(BuildContext context) {

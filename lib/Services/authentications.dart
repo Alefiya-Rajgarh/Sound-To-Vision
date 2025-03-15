@@ -36,26 +36,31 @@ class AuthServices {
     }
     return res;
   }
+
   // for login
   Future<String> loginUser({
     required String email,
     required String password,
-  })
-async {
-  String res = "Some error occurred";
- try {
-   if(email.isNotEmpty|| password.isNotEmpty){
-     await _auth.signInWithEmailAndPassword(email: email, password: password);
-     res = "Successful";
-   }
-   else
-     {
-       res = "please enter all the field";
-     }
- }
-  catch(e){
-   return e.toString();
+  }) async {
+    String res = "Some error occurred";
+    try {
+      if (email.isNotEmpty || password.isNotEmpty) {
+        await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        res = "Successful";
+      } else {
+        res = "please enter all the field";
+      }
+    } catch (e) {
+      return e.toString();
+    }
+    return res;
   }
-  return res;
-}
+
+  // for logout
+  Future<void> signOut() async {
+    await _auth.signOut();
+  }
 }

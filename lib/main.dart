@@ -1,3 +1,5 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'activity/Home.dart';
 import 'activity/splashscreen.dart';
@@ -7,16 +9,26 @@ import 'package:sound_to_vision_app/login/screen/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    MaterialApp(
+      initialRoute: "/",
+      routes: {
+        "/": (context) => splashscreen(),
+        "/home": (context) => Home(),
+        "/login": (context) => LoginScreen(),
+      },
+      debugShowCheckedModeBanner: false,
+      home: StreamBuilder(
+        stream: (FirebaseAuth.instance.authStateChanges()),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Home();
+          } else {
+            return splashscreen();
+          }
+        },
+      ),
+    ),
   );
-  runApp(MaterialApp(
-    initialRoute: "/",
-    routes: {
-      "/" : (context) => splashscreen(),
-      "/home" : (context) => Home(),
-      "/login" : (context) => LoginScreen(),
-    },
-    debugShowCheckedModeBanner: false,
-  ));
 }

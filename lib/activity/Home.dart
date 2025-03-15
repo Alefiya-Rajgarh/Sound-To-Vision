@@ -1,7 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:sound_to_vision_app/Services/authentications.dart';
+import 'package:sound_to_vision_app/activity/splashscreen.dart';
 import 'package:sound_to_vision_app/login/screen/sign_up.dart';
+
+import '../login/widget/button.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,9 +15,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-
     final Map<String, dynamic>? args =
-    ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
     String name = args?['name_value'] ?? "Guest";
     String email = args?['em_value'] ?? "Not Provided";
@@ -31,9 +32,15 @@ class _HomeState extends State<Home> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Text(
-              "Your email: $email",
-              style: TextStyle(fontSize: 18),
+            Text("Your email: $email", style: TextStyle(fontSize: 18)),
+            MyButton(
+              onTab: () async {
+                await AuthServices().signOut();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => splashscreen()),
+                );
+              },
+              text: "Log Out",
             ),
           ],
         ),
