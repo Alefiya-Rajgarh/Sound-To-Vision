@@ -22,6 +22,7 @@ class AuthServices {
           email: email,
           password: password,
         );
+        print(credential.user!.uid);
         // for adding user to firebase
         await _firestore.collection("users").doc(credential.user!.uid).set({
           'name': name,
@@ -35,4 +36,11 @@ class AuthServices {
     }
     return res;
   }
+  Future<String> loginUser({
+    required String email,
+    required String password,
+  })
+async {
+
+}
 }

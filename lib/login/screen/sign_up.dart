@@ -15,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -29,10 +30,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (res == "Successful") {
       setState(() {
         isLoading = true;
-      }
-      );
-      Navigator.pushReplacementNamed(context , '/home',);
-      }
+      });
+      print("navigator running");
+      Navigator.pushReplacementNamed( context, '/home', arguments: {
+        "name_value": nameController.text,
+        "em_value": emailController.text,
+      });
+    }
 
       else {
         setState(() {
@@ -48,6 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SizedBox(
           child: Column(
@@ -75,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 icon: Icons.lock,
               ),
               MyButton(onTab: signUpUser, text: "Sign Up"),
-              SizedBox(height: height / 15),
+              const SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

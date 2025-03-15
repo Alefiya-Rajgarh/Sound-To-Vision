@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
+import '../login/widget/button.dart';
+
 class splashscreen extends StatefulWidget {
   const splashscreen({super.key});
 
@@ -30,7 +32,7 @@ class _splashscreenState extends State<splashscreen> {
                 AnimatedTextKit(
                   animatedTexts:[
                     TypewriterAnimatedText(
-                      "Welcome! to ",
+                      "  Welcome! to ",
                       textStyle: TextStyle(
                           fontSize:45,
                           fontWeight: FontWeight.w500,
@@ -43,7 +45,7 @@ class _splashscreenState extends State<splashscreen> {
                 ),
 
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 Text(
                     "Sound To Vision",
@@ -79,15 +81,12 @@ class _splashscreenState extends State<splashscreen> {
                   color: Colors.blueAccent,
                   size: 50.0,
                 ),
-                IconButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/login");
-                    },
-                    icon: Icon(
-                      Icons.ac_unit_rounded,
-                      size: 50,
-                      color: Colors.white,
-                    )),
+                SizedBox(height: 60,),
+                MyButton(
+                    onTab: () {
+                   Navigator.pushReplacementNamed(context, '/login');
+                },
+              text: "Get Started")
               ],
             ),
           ),
