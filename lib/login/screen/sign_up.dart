@@ -1,19 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:sound_to_vision_app/login/screen/sign_up.dart';
-import 'package:sound_to_vision_app/login/widget/button.dart';
-import 'package:sound_to_vision_app/login/widget/text_field.dart';
+import 'package:sound_to_vision_app/Services/authentications.dart';
+import '../../activity/Home.dart';
+import 'package:sound_to_vision_app/login/widget/snack_bar.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../widget/button.dart';
+import '../widget/text_field.dart';
+import 'login.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _SignupScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignupScreenState extends State<LoginScreen> {
-  // for controller
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  bool isLoading = false;
+
+  void signUpUser() async {
+    String res = await AuthServices().signUpUser(
+      email: emailController.text,
+      password: passwordController.text,
+      name: nameController.text,
+    );
+    if (res == "Successful") {
+      setState(() {
+        isLoading = true;
+      }
+      );
+      Navigator.pushReplacementNamed(context , '/home',);
+      }
+
+      else {
+        setState(() {
+        isLoading = false;
+        });
+        showSnackBar(context, res);
+    }
+    }
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +55,13 @@ class _SignupScreenState extends State<LoginScreen> {
             children: [
               SizedBox(
                 width: double.infinity,
-                height: height / 2.7,
-                child: Image.asset("images/login.jpg"),
+                height: height / 2.8,
+                child: Image.asset("images/sign_up.jpg"),
+              ),
+              TextFieldInput(
+                textEditingController: nameController,
+                hintText: "Enter your name",
+                icon: Icons.person,
               ),
               TextFieldInput(
                 textEditingController: emailController,
@@ -38,40 +71,29 @@ class _SignupScreenState extends State<LoginScreen> {
               TextFieldInput(
                 textEditingController: passwordController,
                 hintText: "Enter your password",
+                isPass: true,
                 icon: Icons.lock,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "forget password?",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ),
-              MyButton(onTab: () {}, text: "Log In"),
+              MyButton(onTab: signUpUser, text: "Sign Up"),
               SizedBox(height: height / 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account? ",
+                    "Already have an account?  ",
                     style: TextStyle(fontSize: 16),
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
                       );
                     },
                     child: Text(
-                      "SignUp",
+                      "LogIn",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
