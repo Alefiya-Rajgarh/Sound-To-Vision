@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sound_to_vision_app/Services/authentications.dart';
 import '../../activity/Home.dart';
@@ -21,6 +22,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController nameController = TextEditingController();
   bool isLoading = false;
 
+  @override
+   void despose(){
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+  }
+
   void signUpUser() async {
     String res = await AuthServices().signUpUser(
       email: emailController.text,
@@ -28,6 +37,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
       name: nameController.text,
     );
     if (res == "Successful") {
+      await FirebaseFirestore.instance.collection("users").doc(emailController.text).set({
+        "name": nameController.text,
+        "email": emailController.text,
+      });
       setState(() {
         isLoading = true;
       });

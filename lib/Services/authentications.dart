@@ -14,7 +14,7 @@ class AuthServices {
     required String password,
     required String name,
   }) async {
-    String res = "Some error occurred";
+    String res = "Fill the details correctly";
     try {
       if (email.isNotEmpty || password.isNotEmpty || name.isNotEmpty) {
         // for registering user in firebase auth
@@ -32,15 +32,30 @@ class AuthServices {
         res = "Successful";
       }
     } catch (e) {
-      print(e.toString());
+      return e.toString();
     }
     return res;
   }
+  // for login
   Future<String> loginUser({
     required String email,
     required String password,
   })
 async {
-
+  String res = "Some error occurred";
+ try {
+   if(email.isNotEmpty|| password.isNotEmpty){
+     await _auth.signInWithEmailAndPassword(email: email, password: password);
+     res = "Successful";
+   }
+   else
+     {
+       res = "please enter all the field";
+     }
+ }
+  catch(e){
+   return e.toString();
+  }
+  return res;
 }
 }
