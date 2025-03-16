@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sound_to_vision_app/Services/authentications.dart';
-import 'package:sound_to_vision_app/activity/splashscreen.dart';
-import 'package:sound_to_vision_app/login/screen/sign_up.dart';
+import 'package:sound_to_vision_app/login/screen/splashscreen.dart';
+import 'package:sound_to_vision_app/activity/sign_up.dart';
 
-import '../login/widget/button.dart';
+import '../../widget/button.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
