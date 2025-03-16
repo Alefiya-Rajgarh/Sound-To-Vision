@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sound_to_vision_app/activity/sign_up.dart';
-import 'package:sound_to_vision_app/login/widget/button.dart';
-import 'package:sound_to_vision_app/login/widget/text_field.dart';
+import 'package:sound_to_vision_app/widget/button.dart';
+import 'package:sound_to_vision_app/widget/text_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../Services/authentications.dart';
-import '../login/widget/snack_bar.dart';
+import '../widget/snack_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

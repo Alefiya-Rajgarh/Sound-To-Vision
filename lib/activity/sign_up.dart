@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sound_to_vision_app/Services/authentications.dart';
-import '../login/screen/Home.dart';
-import 'package:sound_to_vision_app/login/widget/snack_bar.dart';
+import '../screen/Home/Home.dart';
+import 'package:sound_to_vision_app/widget/snack_bar.dart';
 
-import '../login/widget/button.dart';
-import '../login/widget/text_field.dart';
+import '../widget/button.dart';
+import '../widget/text_field.dart';
 import 'login.dart';
 
 class SignUpScreen extends StatefulWidget {
