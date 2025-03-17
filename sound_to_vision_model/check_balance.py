@@ -1,14 +1,26 @@
 import os
+import matplotlib.pyplot as plt
 
 DATASET_PATH = "dataset"
-labels_count = {}
+categories = os.listdir(DATASET_PATH)
+category_counts = {}
 
-for folder in os.listdir(DATASET_PATH):
-    folder_path = os.path.join(DATASET_PATH, folder)
-    if os.path.isdir(folder_path):
-        count = len([f for f in os.listdir(folder_path) if f.endswith('.wav')])
-        labels_count[folder] = count
+for category in categories:
+    path = os.path.join(DATASET_PATH, category)
+    if os.path.isdir(path):
+        count = len(os.listdir(path))
+        category_counts[category] = count
 
-print("Class Distribution:")
-for label, count in labels_count.items():
-    print(f"{label}: {count} audio files")
+# Print counts
+for category, count in category_counts.items():
+    print(f"{category}: {count} samples")
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(category_counts.keys(), category_counts.values(), color='skyblue')
+plt.title("Dataset Class Distribution")
+plt.xlabel("Category")
+plt.ylabel("Number of Samples")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
