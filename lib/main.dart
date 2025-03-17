@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sound_to_vision_app/screen/Home/Drawer/drawer.dart';
 import 'screen/Home/Home.dart';
 import 'screen/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,8 +16,10 @@ void main() async {
       initialRoute: "/",
       routes: {
         "/": (context) => splashscreen(),
-        "/home": (context) => Home(),
+        "/home": (context) => HomeScreen(),
         "/login": (context) => LoginScreen(),
+        "/splashsrn": (context)=> splashscreen(),
+        "/drawer": (context)=> drawer(),
       },
       debugShowCheckedModeBanner: false,
     ),
