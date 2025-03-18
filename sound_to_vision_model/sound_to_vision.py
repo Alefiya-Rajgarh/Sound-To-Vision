@@ -9,3 +9,6 @@ if __name__ == "__main__":
 
     print("3. Predicting from Test Audio")
     subprocess.run(["python", "predict.py"])
+
+    print("4. Converting to TFLite")
+    subprocess.run(["python", "convert_to_tflite.py"])
