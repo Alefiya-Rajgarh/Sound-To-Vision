@@ -14,7 +14,7 @@ class _CustomizeAlertsPageState extends State<CustomizeAlertsPage> {
     return Scaffold(
       appBar: AppBar(title: Text("Customize Alerts")),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             SwitchListTile(

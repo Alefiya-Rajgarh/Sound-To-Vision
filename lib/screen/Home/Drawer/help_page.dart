@@ -6,7 +6,7 @@ class HelpPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Help & Support")),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,7 +27,7 @@ class HelpPage extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.phone),
-              title: Text("+91 98765 43210"),
+              title: Text("+91 9039655152"),
             ),
           ],
         ),

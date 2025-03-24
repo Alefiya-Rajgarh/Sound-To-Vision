@@ -1,9 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sound_to_vision_app/screen/Home/Drawer/drawer.dart';
 import 'package:sound_to_vision_app/screen/Home/profile.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:file_picker/file_picker.dart';
+import 'package:sound_to_vision_app/widget/snack_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,39 +25,74 @@ class _HomeScreenState extends State<HomeScreen> {
     String email = args?['em_value'] ?? "Not Provided";
     String initial = name.isNotEmpty ? name[0].toUpperCase() : "U";
 
+    bool Alerts = true;
+
     //speech to text
-    late stt.SpeechToText _speech;
-    bool isListening = false;
+    late stt.SpeechToText _speech = stt.SpeechToText();
+    String _recognizedText = "";
+    bool _isListening = false;
     String text = "Tap the mic to start recording...";
+
+    void _initSpeechState() async {
+      bool available = await _speech.initialize();
+      if (!mounted) return;
+      setState(() {
+        _isListening = available;
+      });
+    }
 
     @override
     void initState() {
       super.initState();
-      _speech = stt.SpeechToText();
+      _initSpeechState;
     }
 
-    void startListening() async {
-      bool available = await _speech.initialize(
-        onStatus: (status) => print("Speech Status: $status"),
-        onError: (error) => print("Speech Error: $error"),
+    void _startListening() {
+      _speech.listen(
+        onResult: (result) {
+          setState(() {
+            _recognizedText = result.recognizedWords;
+          });
+        },
       );
-
-      if (available) {
-        setState(() => isListening = true);
-        _speech.listen(
-          onResult: (result) {
-            setState(() {
-              text = result.recognizedWords;
-            });
-          },
-        );
-      }
+      setState(() {
+        _isListening = true;
+      });
     }
 
-    void stopListening() {
-      setState(() => isListening = false);
-      _speech.stop();
+    void _copyText() {
+      Clipboard.setData(ClipboardData(text: _recognizedText));
+      showSnackBar(context, "Text copied");
     }
+
+    void _clearText() {
+      setState(() {
+        _recognizedText = "";
+      });
+    }
+
+    // void startListening() async {
+    //   bool available = await _speech.initialize(
+    //     onStatus: (status) => print("Speech Status: $status"),
+    //     onError: (error) => print("Speech Error: $error"),
+    //   );
+
+    //   if (available) {
+    //     setState(() => isListening = true);
+    //     _speech.listen(
+    //       onResult: (result) {
+    //         setState(() {
+    //           text = result.recognizedWords;
+    //         });
+    //       },
+    //     );
+    //   }
+    // }
+    //
+    // void stopListening() {
+    //   setState(() => isListening = false);
+    //   _speech.stop();
+    // }
 
     Future<void> pickAudioFile() async {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -71,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBar(
-          backgroundColor: Color(0xFFF8C8DC),
+          backgroundColor: Color(0xFF1A1A2E),
           elevation: 10,
           automaticallyImplyLeading: false,
           title: Row(
@@ -81,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => drawer()),
+                    MaterialPageRoute(builder: (context) => drawer(name: fullName,email: email, initial: initial,)),
                   );
                 },
               ),
@@ -94,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ShaderMask(
                 shaderCallback:
                     (bounds) => LinearGradient(
-                      colors: [Colors.purple, Colors.blue],
+                      colors: [Color(0xFFF48FB1) ,Colors.purple, Colors.blue],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ).createShader(bounds),
@@ -140,60 +177,98 @@ class _HomeScreenState extends State<HomeScreen> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/home bgimg.jpg"),
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
+          gradient: LinearGradient(
+            colors: [Color(0xFF1A1A2E), Color(0xFF16213E), Color(0xFF0F3460)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
         ),
         child: Column(
           children: [
             SizedBox(height: 60),
 
+            Text(
+              "SOUND TO TEXT",
+              style: TextStyle(
+                color: Color(0xFFF06292),
+                fontSize: 40,
+                fontWeight: FontWeight.w500,
+                //  fontFamily: Roboto-Italic.ttf
+              ),
+            ),
+            SizedBox(height: 20),
+
             // Microphone UI
             Container(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              height: MediaQuery.of(context).size.height / 4,
+              width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.symmetric(horizontal: 30),
-              padding: EdgeInsets.all(100),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.blue, Colors.purple, Colors.red],
+                  colors: [
+                    Color(0xFF62B5F6),
+                    Color(0xFFCE93D8),
+                    Color(0xFFEF9A9A),
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
-                children: [
-                  Icon(Icons.mic, size: 90, color: Colors.white),
-                  SizedBox(height: 10),
-                  Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ],
+              child: Text(
+                _recognizedText.isNotEmpty
+                    ? _recognizedText
+                    : "Tap the mic to start recording !",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFF1A1A2E), fontSize: 18),
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 25),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.copy , color: Color(0xFFF8BBD0), size: 45),
+                  onPressed: _recognizedText.isNotEmpty ? _copyText : null,
+
+                ),
+            SizedBox(width: 30,),
 
             // Play Button
-            IconButton(
-              icon: Icon(
-                Icons.play_circle_fill,
-                size: 80,
+            Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFF06292),
+                shape: BoxShape.circle,
+              ),
+              child: IconButton(
+                onPressed: _startListening,
+                icon: Icon(
+                  _isListening ? Icons.mic : Icons.mic_none,
+                  size: 80,
+                  color: _isListening ? Color(0xFFEF5350) : Colors.white,
+                ),
                 color: Color(0xFFF06292),
               ),
-              onPressed: () {}, // Add functionality here
+            ),
+                SizedBox(width: 30),
+                IconButton(
+                  icon: Icon(Icons.refresh , color: Color(0xFFF8BBD0), size: 56),
+                  onPressed: _recognizedText.isNotEmpty ? _copyText : null,
+
+                ),
+              ],
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: 30),
 
             // File Picker Button
             ElevatedButton.icon(
               onPressed: pickAudioFile,
               icon: Icon(Icons.attach_file),
-              label: Text("Select Audio File" , style: TextStyle(fontSize: 18),),
+              label: Text("Select Audio File", style: TextStyle(fontSize: 18)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
                 foregroundColor: Colors.white,
@@ -204,7 +279,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 30),
 
             // Alerts Button
             GestureDetector(
@@ -214,24 +289,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(vertical: 15),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.pink, Colors.purple, Colors.blue],
+                    colors: [
+                      Color(0xFFF48FB1),
+                      Color(0xFFCE93D8),
+                      Color(0xFF62B5F6),
+                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
-                  child: Text(
-                    "Alerts!",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
+                  child: ShaderMask(
+                    shaderCallback:
+                        (bounds) => LinearGradient(
+                      colors: [Colors.purple, Colors.indigo],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ).createShader(bounds),
+
+                    child: SwitchListTile(
+                      title: Text(
+                      "Alerts!",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                        value: Alerts,
+                        onChanged: (bool value) {
+                          setState(() {
+                            Alerts = value;
+                          });
+                        },
+                      ),
                     ),
                   ),
+
                 ),
               ),
-            ),
           ],
         ),
       ),
