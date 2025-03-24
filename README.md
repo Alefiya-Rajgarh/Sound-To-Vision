@@ -1,16 +1,67 @@
-# sound_to_vision_app
+# Sound-To-Vision 🎵👀
 
-app for deaf people
+Transforming Sound into Sight for the Hearing Impaired
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🌍 Inspiration
 
-A few resources to get you started if this is your first Flutter project:
+According to the World Health Organization (WHO), over 430 million people worldwide have disabling hearing loss. Many essential environmental sounds, such as sirens, vehicle horns, or doorbells, are crucial for safety and daily life. Sound-To-Vision is designed to empower individuals with hearing impairments by converting real-world sounds into visual and sensory cues.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🌐 Problem Statement
+People with hearing disabilities often miss critical auditory cues. Our app solves this by **detecting specific sounds in real-time** and **displaying visual alerts**, ensuring they stay aware of their surroundings.
+
+---
+## 🔧 How It Works
+
+1.  **Real-Time Audio Capture**
+   The app continuously listens to environmental sounds.
+2. **Sound Classification via TFLite Model**  A lightweight **CNN model (converted to TFLite)** detects one of the predefined sound categories.
+3. **Visual Notification**
+   Based on the recognized sound category, the app triggers specific visual, vibration, and notification alerts.
+4. For ex: if an animal sound is detected then the phone vibrates and displays animal image .
+---
+
+## 🎉 Features
+- 📻 **Detects 6 Key Sound Categories:**
+  - Animal Sound
+  - Doorbell
+  - Nature (Rain, Thunder)
+  - Siren
+  - Speech
+  - Vehicle Horn
+
+- 💡 **Real-time Detection**
+- 🔄 **Low Power Consumption** (Efficient on-device processing)
+- 🎨 **User-friendly Interface** with intuitive visual cues
+
+---
+
+## 🚀 Tech Stack
+- **Flutter** (Front-end UI/UX)
+- **Python** (Model training + audio preprocessing)
+- **TensorFlow + Keras** (Model building)
+- **TFLite** (Optimized deployment on mobile)
+- **MFCC** (Used for audio feature extraction)
+- **Firebase** (authentication, cloud storage, and real-time database)
+
+---
+## 🚀 Future Improvements
+- 🔹 Detect more diverse sound categories (alarms, claps, shouts)
+- 🔹 Offline processing with background service
+- 🔹 Deploying the app on the Google Play Store for public use.
+- 🔹 Integrating with wearable devices for real-time alerts.
+
+---
+
+## 🙏 Acknowledgements
+- **Mixkit** for free sound effects dataset
+- **TensorFlow** for model training tools
+- **Flutter** community for UI inspirations
+- **firebase** for authentication
+
+---
+
+
