@@ -48,22 +48,27 @@ class _splashscreenState extends State<splashscreen> {
               ),
 
               SizedBox(height: 40),
-              Text(
-                "Sound To Vision",
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontFamily: "fonts/Roboto-BoldItalic.ttf",
-                  shadows: [
-                    Shadow(
-                      blurRadius: 20.0,
-                      color: Colors.blueAccent,
-                      offset: Offset(0, 0),
-                    ),
-                  ],
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Center(
+            child: Text(
+                  "Sound To Vision",
+                  style: TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontFamily: "fonts/Roboto-BoldItalic.ttf",
+                    shadows: [
+                      Shadow(
+                        blurRadius: 20.0,
+                        color: Colors.blueAccent,
+                        offset: Offset(0, 0),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+          ),
+        ),
               SizedBox(height: 30),
               Text(
                 "By CodeVisionaries",
