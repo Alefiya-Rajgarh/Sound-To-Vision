@@ -6,6 +6,16 @@ import 'package:sound_to_vision_app/screen/Home/profile.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:file_picker/file_picker.dart';
 import 'package:sound_to_vision_app/widget/snack_bar.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+Future<void> requestMicrophonePermission() async {
+  var status = await Permission.microphone.request();
+  if (status.isGranted) {
+    print("Microphone permission granted!");
+  } else {
+    print("Microphone permission denied!");
+  }
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -193,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Color(0xFFF06292),
                 fontSize: 40,
                 fontWeight: FontWeight.w500,
-                //  fontFamily: Roboto-Italic.ttf
+                  fontFamily: "JuliusSansOne-Regular.ttf",
               ),
             ),
             SizedBox(height: 20),
@@ -310,10 +320,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     child: SwitchListTile(
                       title: Text(
-                      "Alerts!",
+                      "  Alerts!",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 28,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
                       ),),
                         value: Alerts,
