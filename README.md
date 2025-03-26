@@ -49,7 +49,7 @@ People with hearing disabilities often miss critical auditory cues. Our app solv
   - **Firebase authentication** (for user login) 
   - **Firebase cloud functions** (for backend processing) 
   - **Firestore** (for storing user preferences & app data)
-- **Flask API** (For cloud-based sound classification and future scalability
+- **Flask API** (For cloud-based sound classification and future scalability)
 
 ---
 ## 🚀 Future Improvements
