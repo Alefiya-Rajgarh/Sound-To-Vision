@@ -323,7 +323,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       "  Alerts!",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 35,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),),
                         value: Alerts,
