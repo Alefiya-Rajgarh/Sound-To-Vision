@@ -45,9 +45,9 @@ People with hearing disabilities often miss critical auditory cues. Our app solv
 - **TensorFlow + Keras** (Model building)
 - **TFLite** (Optimized deployment on mobile)
 - **MFCC** (Used for audio feature extraction)
-- **Google Firebase** 
-  - **Firebase authentication**(for user login) 
-  - **Firebase cloud functions**(for backend processing) 
+- **Google Firebase:** 
+  - **Firebase authentication** (for user login) 
+  - **Firebase cloud functions** (for backend processing) 
   - **Firestore** (for storing user preferences & app data)
 - **Flask API** (For cloud-based sound classification and future scalability
 
