@@ -57,6 +57,8 @@ People with hearing disabilities often miss critical auditory cues. Our app solv
 - 🔹 Offline processing with background service
 - 🔹 Deploying the app on the Google Play Store for public use.
 - 🔹 Integrating with wearable devices for real-time alerts.
+- 🔹Integrate ML model using Flask API in future for more flexibility & easy.
+- 🔹Optimize it using Gunicorn and Docker to improve performance and make deployment scalable.
 
 ---
 
