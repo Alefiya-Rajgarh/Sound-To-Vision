@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Sound to Vision App</title>
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
+    <style>
+        body{
+            background-color: black;
+        }
+        .dwdbut{
+            background-color: blue;
+            color: white;
+            border-radius: 30px;
+            text-align: center;
+            height: 50px;
+            margin-left:35vw ;
+        }
+        .flexx{
+            display: flex;
+            justify-content: flex-start;
+        
+        }
+        .logo{
+            margin-left: 25vw;
+            border-radius: 50%;
+            height: 20vh;
+        }
+    </style>
+</head>
+<body >
+    <h2 style="color: aliceblue; text-align: center;">Download the Sound to Vision App</h2>
+    <button class="dwdbut"><a href="Sound-to-Vision.apk" download style="color:aliceblue; font-size: 25px;">Click Here to Download</a></button>
+    <br>
+    <br>
+    
+    <div class="container">
+        <div class="flexx">
+            <div><h1 style="color: aquamarine;">Sound-To-Vision 🎵👀</h1>
+                <h3 style="color:rgb(235, 166, 190);">Transforming Sound into Sight for the Hearing Impaired</h3>
+            </div>
+            <br>
+            <div><img src="logo.jpg" class="logo"></div>
+        </div>
+        <h2 style="color: aquamarine;">🌍 Inspiration</h2>
+        <p style="color:rgb(235, 166, 190);">According to the World Health Organization (WHO), over 430 million people worldwide have disabling hearing loss. Many essential environmental sounds, such as sirens, vehicle horns, or doorbells, are crucial for safety and daily life. Sound-To-Vision is designed to empower individuals with hearing impairments by converting real-world sounds into visual and sensory cues.</p>
+        <div>
+            <h2 style="color: aquamarine;">🌐 Problem Statement</h2>
+            <p style="color:rgb(235, 166, 190);">People with hearing disabilities often miss critical auditory cues. Our app solves this by detecting specific sounds in real-time and displaying visual alerts, ensuring they stay aware of their surroundings.</p>
+        </div>
+        <div>
+            <h2 style="color: aquamarine;">🌟 Solution</h2>
+            <p style="color:rgb(235, 166, 190);">Real-Time Audio Capture The app continuously listens to environmental sounds.
+                Sound Classification via TFLite Model A lightweight CNN model (converted to TFLite) detects one of the predefined sound categories.
+                Visual Notification Based on the recognized sound category, the app triggers specific visual, vibration, and notification alerts.
+                For ex: if an animal sound is detected then the phone vibrates and displays animal image .</p>
+            <h2 style="color: aquamarine;">🎉 Features</h2>
+            <p style="color:rgb(235, 166, 190);">📻 Detects 6 Key Sound Categories:<br>
+
+                Animal Sound<br>
+                Doorbell<br>
+                Nature (Rain, Thunder)<br>
+                Siren<br>
+                Speech<br>
+                Vehicle Horn<br>
+                💡 Real-time Detection<br>
+                
+                🔄 Low Power Consumption (Efficient on-device processing)<br>
+                
+                🎨 User-friendly Interface with intuitive visual cues</p>
+        </div>
+        <div>
+            <h2 style="color: aquamarine;">🚀 Tech Stack</h2>
+            <p style="color:rgb(235, 166, 190);">🔹Flutter (Front-end UI/UX)<br>
+                🔹Python (Model training + audio preprocessing)<br>
+                🔹TensorFlow + Keras (Model building)<br>
+                🔹TFLite (Optimized deployment on mobile)<br>
+                🔹MFCC (Used for audio feature extraction)<br>
+                🔹Google Firebase:<br>
+                🔹Firebase authentication (for user login)<br>
+                🔹Firebase cloud functions (for backend processing)<br>
+                🔹Firestore (for storing user preferences & app data)<br>
+                🔹Flask API (For cloud-based sound classification and future scalability)</p>
+        </div>
+        <div>
+            <h2 style="color: aquamarine;">🚀 Future Improvements</h2>
+            <p style="color:rgb(235, 166, 190);">🔹 Detect more diverse sound categories (alarms, claps, shouts)<br>
+                🔹 Offline processing with background service<br>
+                🔹 Deploying the app on the Google Play Store for public use.<br>
+                🔹 Integrating with wearable devices for real-time alerts.<br>
+                🔹Integrate ML model using Flask API in future for more flexibility & easy.<br>
+                🔹Optimize it using Gunicorn and Docker to improve performance and make deployment scalable.<br>
+
+        </div>
+        <h2 style="color: aquamarine;">Team Members :</h2>
+        <div class="team">
+            <div></div>
+        </div>
+    </div>
+    
+</body>
+</html>
