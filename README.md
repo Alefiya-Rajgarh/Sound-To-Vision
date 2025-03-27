@@ -67,6 +67,8 @@ People with hearing disabilities often miss critical auditory cues. Our app solv
 - **TensorFlow** for model training tools
 - **Flutter** community for UI inspirations
 - **firebase** for authentication
+- **flask api** for future scalability
+- **librosa** for audio processing
 
 ---
 
