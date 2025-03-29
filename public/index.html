@@ -1,100 +1,302 @@
 <html>
 <head>
     <title>Sound to Vision App</title>
-    <link rel="icon" href="logo.jpg" type="image/x-icon">
+    <link rel="icon" href="logo_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
         body{
-            background-color: black;
+            background: linear-gradient(to bottom , #061869,#150921);;
         }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .block{
+            background: linear-gradient(to right, #c66bfa, #3987ea, #bd5af6);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px;
+            width: 80vw;
+        }
+        header{
+            background: linear-gradient(to right, #9637cc, #0452b6 , #9637cc);
+            padding: 50px;
+            border-bottom: 2px solid white;
+            color: rgb(15, 3, 98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
         .dwdbut{
-            background-color: blue;
-            color: white;
+            background-color: deeppink;
             border-radius: 30px;
             text-align: center;
             height: 50px;
-            margin-left:35vw ;
+            font-size: 25px;
+            padding: 10px;
+            font-family: "Winky Sans", sans-serif;
         }
-        .flexx{
+        .dwdbut:hover{
+            background-color: red;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(98, 3, 20);
+        }
+        h1{
+            font-family: "Julius Sans One", sans-serif;
+            text-align: center;
+            color:rgb(15, 3, 98);
+            font-weight: 1500;
+        }
+
+        h3{
+            text-align: center;
+            color: #b7ec77;
+            font-family: "Gowun Dodum", sans-serif;
+        }
+        .team{
+            display:flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+        }
+        .member{
+            height: 200px;
+        }
+
+        .row{
+            display:flex;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .form-control{
+            text-align: center;
             display: flex;
-            justify-content: flex-start;
-        
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            gap: 10px;
+            width: 60vw;
         }
-        .logo{
-            margin-left: 25vw;
+        .form-inputs{
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+        .input-field{
+            width: 50%;
+            height: 55px;
+            background: transparent;
+            border: 2px solid #bdbdbd;
+            border-radius: 10px;
+            padding-inline: 20px;
+            outline: none;
+        }
+
+        textarea{
+            width: 60vw;
+            height: 250px;
+            background: transparent;
+            border: 2px solid #bdbdbd;
+            border-radius: 10px;
+            padding: 15px 20px;
+            outline: none;
+            resize: none;
+        }
+        .send-button>.btn{
+            width: 20vw;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            gap:10px;
+            justify-content: center;
+            background-color: mediumpurple ;
+            color: rgb(15, 3, 98) ;
+            font-size:30px;
+            border-radius: 10px;
+        }
+        .send-button>.btn:hover{
+            background: #00B5E7;
+        }
+        .send-button i{
+            font-size: 20px;
+            rotate: -45deg;
+        }
+        input::placeholder{
+            color: #3f444b;
+            font-size: 1rem;
+        }
+        textarea::placeholder{
+            color: #3f444b;
+            font-size: 1rem;
+        }
+        footer{
+            background: linear-gradient(to right, #9637cc, #0452b6 , #9637cc);
+            padding: 50px;
+            border-bottom: 2px solid white;
+            color: rgb(15, 3, 98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .footer-social-icons{
+            display: flex;
+            gap: 30px;
+        }
+        .icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            height: 20vh;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
         }
+        .icon:hover{
+            color: white;
+        }
+
     </style>
 </head>
 <body >
-    <h2 style="color: aliceblue; text-align: center;">Download the Sound to Vision App</h2>
-    <button class="dwdbut"><a href="Sound-to-Vision.apk" download style="color:aliceblue; font-size: 25px;">Click Here to Download</a></button>
-    <br>
-    <br>
-    
+<header>
+    <h1 style="text-align: center; margin-top: 0;">Download the Sound to Vision App</h1>
+    <button class="dwdbut"><a href="https://github.com/Alefiya-Rajgarh/Sound-To-Vision/releases/download/v1.0.0/Sound-to-Vision.apk" download >Download APK </a></button>
+</header>
     <div class="container">
-        <div class="flexx">
-            <div><h1 style="color: aquamarine;">Sound-To-Vision 🎵👀</h1>
-                <h3 style="color:rgb(235, 166, 190);">Transforming Sound into Sight for the Hearing Impaired</h3>
+        <div class="block">
+            <div class="flexx">
+                <div><h1>Sound-To-Vision</h1>
+                    <h3 >Transforming Sound into Sight for the Hearing Impaired</h3>
+                </div>
+<!--                <div><img src="logo_icon.png" class="logo"></div>-->
+                <h1>Inspiration</h1>
+                <h3>According to the World Health Organization (WHO), over 430 million people worldwide have disabling hearing loss. Many essential environmental sounds, such as sirens, vehicle horns, or doorbells, are crucial for safety and daily life. Sound-To-Vision is designed to empower individuals with hearing impairments by converting real-world sounds into visual and sensory cues.</h3>
             </div>
-            <br>
-            <div><img src="logo.jpg" class="logo"></div>
         </div>
-        <h2 style="color: aquamarine;">🌍 Inspiration</h2>
-        <p style="color:rgb(235, 166, 190);">According to the World Health Organization (WHO), over 430 million people worldwide have disabling hearing loss. Many essential environmental sounds, such as sirens, vehicle horns, or doorbells, are crucial for safety and daily life. Sound-To-Vision is designed to empower individuals with hearing impairments by converting real-world sounds into visual and sensory cues.</p>
-        <div>
-            <h2 style="color: aquamarine;">🌐 Problem Statement</h2>
-            <p style="color:rgb(235, 166, 190);">People with hearing disabilities often miss critical auditory cues. Our app solves this by detecting specific sounds in real-time and displaying visual alerts, ensuring they stay aware of their surroundings.</p>
-        </div>
-        <div>
-            <h2 style="color: aquamarine;">🌟 Solution</h2>
-            <p style="color:rgb(235, 166, 190);">Real-Time Audio Capture The app continuously listens to environmental sounds.
+
+
+        <div class="block">
+            <h1>Problem Statement</h1>
+            <h3>People with hearing disabilities often miss critical auditory cues. Our app solves this by detecting specific sounds in real-time and displaying visual alerts, ensuring they stay aware of their surroundings.</h3>
+            <h1>Solution</h1>
+            <h3>Real-Time Audio Capture The app continuously listens to environmental sounds.
                 Sound Classification via TFLite Model A lightweight CNN model (converted to TFLite) detects one of the predefined sound categories.
                 Visual Notification Based on the recognized sound category, the app triggers specific visual, vibration, and notification alerts.
-                For ex: if an animal sound is detected then the phone vibrates and displays animal image .</p>
-            <h2 style="color: aquamarine;">🎉 Features</h2>
-            <p style="color:rgb(235, 166, 190);">📻 Detects 6 Key Sound Categories:<br>
-
+                For ex: if an animal sound is detected then the phone vibrates and displays animal image .</h3>
+        </div>
+        <div class="block">
+            <h1 >Features</h1>
+            <h3>Detects 6 Key Sound Categories :<br>
                 Animal Sound<br>
                 Doorbell<br>
                 Nature (Rain, Thunder)<br>
                 Siren<br>
                 Speech<br>
                 Vehicle Horn<br>
-                💡 Real-time Detection<br>
-                
-                🔄 Low Power Consumption (Efficient on-device processing)<br>
-                
-                🎨 User-friendly Interface with intuitive visual cues</p>
+                Real-time Detection<br>
+                Low Power Consumption (Efficient on-device processing)<br>
+                User-friendly Interface with intuitive visual cues</h3>
         </div>
-        <div>
-            <h2 style="color: aquamarine;">🚀 Tech Stack</h2>
-            <p style="color:rgb(235, 166, 190);">🔹Flutter (Front-end UI/UX)<br>
-                🔹Python (Model training + audio preprocessing)<br>
-                🔹TensorFlow + Keras (Model building)<br>
-                🔹TFLite (Optimized deployment on mobile)<br>
-                🔹MFCC (Used for audio feature extraction)<br>
-                🔹Google Firebase:<br>
-                🔹Firebase authentication (for user login)<br>
-                🔹Firebase cloud functions (for backend processing)<br>
-                🔹Firestore (for storing user preferences & app data)<br>
-                🔹Flask API (For cloud-based sound classification and future scalability)</p>
+        <div class="block">
+            <h1 >Tech Stack :</h1>
+            <h3>-Flutter (Front-end UI/UX)<br>
+                -Python (Model training + audio preprocessing)<br>
+                -TensorFlow + Keras (Model building)<br>
+                -TFLite (Optimized deployment on mobile)<br>
+                -MFCC (Used for audio feature extraction)<br>
+                -Google Firebase:<br>
+                Firebase authentication (for user login)<br>
+                Firebase cloud functions (for backend processing)<br>
+                Firestore (for storing user preferences & app data)<br>
+                -Flask API (For cloud-based sound classification and future scalability)</h3>
         </div>
-        <div>
-            <h2 style="color: aquamarine;">🚀 Future Improvements</h2>
-            <p style="color:rgb(235, 166, 190);">🔹 Detect more diverse sound categories (alarms, claps, shouts)<br>
-                🔹 Offline processing with background service<br>
-                🔹 Deploying the app on the Google Play Store for public use.<br>
-                🔹 Integrating with wearable devices for real-time alerts.<br>
-                🔹Integrate ML model using Flask API in future for more flexibility & easy.<br>
-                🔹Optimize it using Gunicorn and Docker to improve performance and make deployment scalable.<br>
+        <div class="block">
+            <h1 >Future Improvements :</h1>
+            <h3>
+                -Detect more diverse sound categories (alarms, claps, shouts)<br>
+                -Offline processing with background service<br>
+                -Deploying the app on the Google Play Store for public use.<br>
+                -Integrating with wearable devices for real-time alerts.<br>
+                -Integrate ML model using Flask API in future for more flexibility & easy.<br>
+                -Optimize it using Gunicorn and Docker to improve performance and make deployment scalable.<br></h3>
+        </div>
+        <div class ="block">
+            <h1>Team Members</h1>
+            <div class="team">
+                <div>
+                    <img src="Arpita.png" class="member" alt="Arpita">
+                    <h3>Arpita Mishra</h3>
+                </div>
+                <div>
+                    <img src="Alefiya.png" class="member" alt="Alefiya">
+                    <h3 style="margin-bottom: 0;">Alefiya Rajgarh</h3>
+                    <h3 style="color: chartreuse; margin: 0;">(Team Lead)</h3>
+                </div>
+                <div>
+                    <img src="Ritika.png" class="member" alt="Ritika">
+                    <h3>Ritika Mishra</h3>
+                </div>
+            </div>
+        </div>
+        <div class="block" id="last_sec">
+            <h1>Contact Us</h1>
+            <h3> Any suggestions !!, contact us here</h3>
+            <div class="row">
+                <form class="form">
+                    <div class="form-control">
+                        <div class="form-inputs" >
+                            <input type="text" class="input-field" placeholder="Name" required>
+                            <input type="email" class="input-field" placeholder="Email" required>
+                        </div>
+                        <div class="text-area">
+                            <textarea placeholder="Message" required></textarea>
+                        </div>
+                        <div class="send-button">
+                            <button class="btn" type="submit"><b>Send</b></button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
 
-        </div>
-        <h2 style="color: aquamarine;">Team Members :</h2>
-        <div class="team">
-            <div></div>
-        </div>
     </div>
-    
+<footer>
+    <div >
+        <h3>for more details visit: <a href="https://www.youtube.com/watch?v=ocle06kXH98" target="_blank">our youtube video</a></h3>
+    </div>
+    <div class="footer-social-icons">
+        <div class="icon"><a href = "https://github.com/Alefiya-Rajgarh/Sound-To-Vision" target="_blank"><i class="uil uil-github-alt"></i></a></div>
+    </div>
+    <div class="bottom-footer">
+        <p>Copyright &copy <a href="#home" style="text-decoration: none;">CodeVisionaries</a>
+        </p>
+    </div>
+</footer>
+<script>
+
+     document.getElementById("form").addEventListener("submit", function(event) {
+         event.preventDefault();
+         alert("Your message has been sent successfully!");
+         this.reset();
+     });
+</script>
 </body>
+
 </html>
